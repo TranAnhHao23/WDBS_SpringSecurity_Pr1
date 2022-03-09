@@ -10,16 +10,16 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserController {
 
-    @GetMapping("/")
+    @GetMapping
     public ModelAndView index() {
-        return new ModelAndView("/index");
+        return new ModelAndView("index");
     }
 
     @GetMapping("/user")
     public ModelAndView user(Principal principal) {
         // Get authenticated user name from Principal
         System.out.println(principal.getName());
-        return new ModelAndView("/user");
+        return new ModelAndView("user");
     }
 
     @GetMapping("/admin")
@@ -27,6 +27,6 @@ public class UserController {
         // Get authenticated user name from SecurityContext
         SecurityContext context = SecurityContextHolder.getContext();
         System.out.println(context.getAuthentication().getName());
-        return new ModelAndView("/admin");
+        return new ModelAndView("admin");
     }
 }
